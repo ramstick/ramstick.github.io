@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+        <script src="script.js"></script>
+        <title>Expression Parser</title>
+    </head>
+    <body class="container">
+        <nav class="navbar navbar-light navbar-expand-lg bg-light">
+            <a class="navbar-brand" href="https://ramstick.github.io/">Ramstick</a>
+            <a class="navbar-text collapse navbar-collapse" href="#Parser">Expression Parser</a>
+            <a class="navbar-text collapse navbar-collapse" href="#Parabola">Parabola Calculator</a>
+            <a class="navbar-text collapse navbar-collapse" href="#Conic">Conic Calculator</a>
+        </nav>
+        <br>
+        <div class="row alert alert-secondary" id="Parser">
+            <div class="col-3">
+                <h3>The Expression Parser</h1>
+                <p>My garbage expression parser</p>
+            </div>
+            <div class="col">
+                <div class="row-cols-6 alert alert-info">
+                    <h2>Parser</h2>
+                    <input class="form-control form-control-lg col-10 form-check-inline" style="padding:20px;" type="text" placeholder="x^2" id="eee">
+                    <button class="btn btn-success btn-lg col-auto" onclick="parseExpressionE(document.getElementById('eee').value,document.getElementById('ee'),document.getElementById('abc'));">Submit</button>
+                </div>
+                <div class="alert alert-primary">
+                    <h3>Output</h3>
+                    <h5 id="ee" class="text-success">:NO DATA:</h2>
+                    
+                    <h3>Debug</h3>
+                    <h5 id="abc" class="text-success">:NO DATA:</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row alert alert-dark" id="Parabola">
+            <div class="col-3">
+                <h3>The Parabola Computer</h1>
+                <p>God save me with my math homework</p>
+            </div>
+            <div class="col">
+                <div class="alert alert-info">
+                    <h2>Parabola Computer</h2>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Vertex: (</span>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="parabola-in-vx" value="-7">
+                        <div class="input-group-append">
+                            <span class="input-group-text">, </span>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="parabola-in-vy" value="3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">)</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Focus: (</span>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="parabola-in-fx" value="-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">, </span>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="parabola-in-fy" value="3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">)</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Focal Length: </span>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="parabola-in-p">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Directrix:</span>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="directrix-label">y =</span>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="parabola-in-dir">
+                    </div>
+                    <br>
+                    <h4>Opens</h4>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active" name="direction">
+                            <input type="radio" onclick="PARABOLA_STATE_A=0;updateParabola()" checked>Up
+                        </label>
+                        <label class="btn btn-secondary active" name="direction">
+                            <input type="radio" onclick="PARABOLA_STATE_A=1;updateParabola()" >Down
+                        </label>
+                        <label class="btn btn-secondary active" name="direction">
+                            <input type="radio" onclick="PARABOLA_STATE_A=2;updateParabola()" >Left
+                        </label>
+                        <label class="btn btn-secondary active" name="direction">
+                            <input type="radio" onclick="PARABOLA_STATE_A=3;updateParabola()" >Right
+                        </label>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <button class="btn btn-success btn-lg col-auto" onclick="parabola(document.getElementById('parabola-in-vx').value+','+document.getElementById('parabola-in-vy').value+','+document.getElementById('parabola-in-fx').value+','+document.getElementById('parabola-in-fy').value+','+document.getElementById('parabola-in-p').value+','+document.getElementById('parabola-in-dir'.value),document.getElementById('parabola-out'),document.getElementById('parabola-debug'));">Submit</button>
+                </div>
+                <div class="alert alert-primary">
+                    <h3>Output</h3>
+                    <h5 id="parabola-out" class="text-success">:NO DATA:</h2>
+                    
+                    <h3>Debug</h3>
+                    <h5 id="parabola-debug" class="text-success">:NO DATA:</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row alert alert-dark" id="Conic">
+            <div class="col-3">
+                <h3>The Conic Computer</h1>
+                <p>God save me with my math homework</p>
+            </div>
+            <div class="col">
+                <div class="alert alert-info">
+                    <h2>Conic Computer</h2>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-primary" id="conic-signbutton-e" onclick="if(CONIC_EQUATION_SIGNS[0]) document.getElementById('conic-signbutton-e').innerHTML='+';else document.getElementById('conic-signbutton-e').innerHTML='-';CONIC_EQUATION_SIGNS[0] = !CONIC_EQUATION_SIGNS[0]">+</button>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="conic-in-a">
+                        <div class="input-group-append">
+                            <span class="input-group-text">x<sup>2</sup></span>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" id="conic-signbutton-a" onclick="if(CONIC_EQUATION_SIGNS[1]) document.getElementById('conic-signbutton-a').innerHTML='+';else document.getElementById('conic-signbutton-a').innerHTML='-';CONIC_EQUATION_SIGNS[1] = !CONIC_EQUATION_SIGNS[1]">+</button>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="conic-in-b">
+                        <div class="input-group-append">
+                            <span class="input-group-text">y<sup>2</sup></span>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" id="conic-signbutton-b" onclick="if(CONIC_EQUATION_SIGNS[2]) document.getElementById('conic-signbutton-b').innerHTML='+';else document.getElementById('conic-signbutton-b').innerHTML='-';CONIC_EQUATION_SIGNS[2] = !CONIC_EQUATION_SIGNS[2]">+</button>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="conic-in-c">
+                        <div class="input-group-append">
+                            <span class="input-group-text">x</span>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" id="conic-signbutton-c" onclick="if(CONIC_EQUATION_SIGNS[3]) document.getElementById('conic-signbutton-c').innerHTML='+';else document.getElementById('conic-signbutton-c').innerHTML='-';CONIC_EQUATION_SIGNS[3] = !CONIC_EQUATION_SIGNS[3]">+</button>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="conic-in-d">
+                        <div class="input-group-append">
+                            <span class="input-group-text">y</span>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" id="conic-signbutton-d" onclick="if(CONIC_EQUATION_SIGNS[4]) document.getElementById('conic-signbutton-d').innerHTML='+';else document.getElementById('conic-signbutton-d').innerHTML='-';CONIC_EQUATION_SIGNS[4] = !CONIC_EQUATION_SIGNS[4]">+</button>
+                        </div>
+                        <input class="form-control form-control-lg col-1" style="padding:5px;" type="text" placeholder="0" id="conic-in-e">
+                        <div class="input-group-append">
+                            <span class="input-group-text">=  0</span>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-success btn-lg col-auto" onclick="conic(document.getElementById('conic-out'),document.getElementById('conic-debug'));">Submit</button>
+                </div>
+                <div class="alert alert-primary">
+                    <h3>Output</h3>
+                    <h5 id="conic-out" class="text-success">:NO DATA:</h2>
+                    
+                    <h3>Debug</h3>
+                    <h5 id="conic-debug" class="text-success">:NO DATA:</h5>
+                </div>
+            </div>
+        </div>
+        <div class="">
+
+        </div>
+    </body>
+</html>
